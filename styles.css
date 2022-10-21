@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
+/* reset basic styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* variables */
+:root {
+    --clr-desaturated-red: hsl(0, 36%, 70%);
+    --clr-soft-red: hsl(0, 93%, 68%);
+
+    --clr-dark-grayish-red: hsl(0, 6%, 24%);
+
+    --gradient-1: 135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%);
+    --gradient-2: 135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%);
+}
+
+/* utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+/* styles */
+body {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 16px;
+
+    background: linear-gradient(var(--gradient-1));
+}
+
+button {
+    position: absolute;
+    top: 0;
+    right: -1px;
+
+    height: 100%;
+    width: 4rem;
+    border-radius: 2rem;
+    border: none;
+
+    background: linear-gradient(var(--gradient-2));
+    box-shadow: 0 1rem 1rem -0.2rem lightgrey;
+
+    cursor: pointer;
+
+    transition: all 150ms ease-in-out;
+}
+
+button:hover,
+button:focus-visible {
+    filter: brightness(120%);
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("./images/icon-arrow.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 100%;
+    height: 100%;
+}
+
+form {
+    position: relative;
+
+    max-width: 25rem;
+    margin-inline: auto;
+}
+
+h1 {
+    color: var(--clr-desaturated-red);
+
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: 10px;
+    line-height: 1.1;
+    text-transform: uppercase;
+
+    max-width: 10ch;
+    margin-inline: auto;
+
+    margin-block-end: 1rem;
+}
+
+h1 strong {
+    color: var(--clr-dark-grayish-red);
+
+    font-weight: 600;
+}
+
+header {
+    padding: 2rem;
+}
+
+header > img {
+    max-width: 6rem;
+}
+
+input {
+    position: relative;
+
+    width: 100%;
+
+    background: none;
+    border: solid 1px var(--clr-desaturated-red);
+    border-radius: 2rem;
+    
+    padding: 1rem 2rem;
+}
+
+input::placeholder {
+    color: var(--clr-desaturated-red);
+    opacity: 0.4;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+input:focus:invalid {
+    border-color: var(--clr-soft-red);
+    border-width: 2px;
+
+    background-image: url("./images/icon-error.svg");
+    background-repeat: no-repeat;
+    background-position: 74% 50%;
+}
+
+/*invalid*/
+input:focus:invalid + span {
+    display: block;
+}
+
+span {
+    display: none;
+
+    position: absolute;
+    padding-top: 0.7rem;
+    padding-left: 2rem;
+
+    color: var(--clr-soft-red);
+
+    font-size: 14px;
+    font-weight: 400;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+main > picture,
+main > picture > img {
+    display: block;
+    width: 100%;
+}
+
+p {
+    color: var(--clr-desaturated-red);
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+
+    max-width: 35ch;
+    margin-inline: auto;
+
+    margin-block-end: 2rem;
+}
+
+section {
+    text-align: center;
+
+    margin: 4rem 2rem;
+}
+
+@media (min-width: 60rem) {
+    button {
+        width: 6rem;
+    }
+
+    form {
+        max-width: 41ch;
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 48px;
+        letter-spacing: 0.75rem;
+
+        margin-block-end: 1.5rem;
+    }
+
+    h1, p {
+        margin-inline: 0 auto;
+    }
+
+    header {
+        position: absolute;
+        padding: 0;
+        margin-block-start: 4rem;
+    }
+
+    header > img {
+        max-width: 10rem;
+    }
+
+    header, section {
+        padding-inline-start: min(6vw, 5rem);
+    }
+
+    input {
+        font-size: 16px;
+
+        padding: 1.1rem 2rem;
+    }
+
+    main {
+        height: 100vh;
+        
+        flex-direction: row-reverse;
+
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    main > picture,
+    main > picture > img {
+        width: auto;
+        height: 100%;
+    }
+
+    p {
+        font-size: 15px;
+
+        max-width: 45ch;
+
+        margin-block-end: 2.5rem;
+    }
+
+    section {
+        background-image: url("./images/bg-pattern-desktop.svg");
+        background-size: cover;
+
+        text-align: left;
+        margin: 0;
+        padding-block-start: 16%;   
+        flex-grow: 1;
+        align-self: stretch;
+    }
+}
+
+@media (min-width: 75rem) {
+    form {
+        max-width: 44ch;
+    }
+
+    h1 {
+        font-size: 64px;
+        letter-spacing: 1rem;
+
+        margin-block-end: 1.5rem;
+    }
+
+    input {
+        font-size: 16px;
+
+        padding: 1.1rem 2rem;
+    }
+
+    header, section {
+        padding-inline-start: min(12vw, 10rem);
+    }
+
+    p {
+        font-size: 16px;
+
+        max-width: 45ch;
+
+        margin-block-end: 2.5rem;
+    }
+}
+
